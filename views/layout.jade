@@ -1,0 +1,76 @@
+!!! 5
+html
+  //<![end if]
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    title TekPub: High-quality screencasts for programmers.
+    meta(name="description", content="")
+    meta(name="author", content="")
+    meta(name="viewport", content='width=device-width, initial-scale=1')
+    
+    link(rel="shortcut icon", href="/images/favicon.ico")
+    link(rel="apple-touch-icon", href="/images/apple-touch-icon.png")
+    link(rel="apple-touch-icon", sizes="72x72", href="/images/apple-touch-icon-72x72.png")
+    link(rel="apple-touch-icon", sizes="114x114", href="/images/apple-touch-icon-114x114.png")
+
+   body(lang='en') 
+    .navbar
+      .navbar-inner
+        .container
+          a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          .brand
+            a(href="/") 
+              img(src="/images/logo.png")
+          .nav-collapse.pull-right
+            ul.nav
+              li
+                a(href="/") LOGIN
+              li.dropdown
+                a.dropdown-toggle(data-toggle="dropdown") PRODUCTIONS
+                  b.caret
+                ul.dropdown-menu
+                  li
+                    a(href ="#") Microsoft.NET
+                  li
+                    a(href ="#") Ruby
+                  li
+                    a(href ="#") Apple iOS
+                  li
+                    a(href ="#") Javascript
+              li
+                a(href="/") PRICING                
+              li
+                a(href="/") HELP 
+              li
+                a(href="/") COUPON? 
+              li
+                form.navbar-search
+                  input.search-query(placeholder="Search")
+                
+    != body
+
+    .container
+      footer
+        hr
+        p
+          &copy 2012, Tekpub
+
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/responsive.css')
+    link(rel='stylesheet', href='/stylesheets/overrides.css')
+
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='https://use.typekit.com/msx8oui.js')
+    script
+      try{Typekit.load();}catch(e){}
+
+    //[if lt IE 9]
+      script(src="//html5shim.googlecode.com/svn/trunk/html5.js")
+    
+    script
+      $('.dropdown-toggle').dropdown();
