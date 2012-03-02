@@ -4,6 +4,7 @@
  */
 
 var express = require('express')
+  , Resource = require('express-resource')
   , routes = require('./routes')
 
 var app = module.exports = express.createServer();
@@ -33,9 +34,8 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
   mongoose.connect('mongodb://localhost/tekpub');  
 });
-
 // Routes
-
+app.resource('productions', require('./controllers/productions'));
 app.get('/', routes.index);
 
 app.listen(3000);
