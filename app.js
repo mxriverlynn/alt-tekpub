@@ -4,8 +4,7 @@
  */
 
 var express = require('express')
-  , Resource = require('express-resource')
-  , routes = require('./routes')
+  , Resource = require('express-resource');
 
 var app = module.exports = express.createServer();
 var mongoose = require('mongoose');
@@ -34,9 +33,15 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
   mongoose.connect('mongodb://localhost/tekpub');  
 });
+
 // Routes
-app.resource('productions', require('./controllers/productions'));
-app.get('/', routes.index);
+app.get("/api", require('./routes/api').index);
+
+
+app.resource('productions', require('./routes/productions'));
+app.resource('/', require('./routes/index'));
+
+
 
 app.listen(3000);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
