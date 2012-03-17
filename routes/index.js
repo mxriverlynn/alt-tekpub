@@ -1,14 +1,7 @@
 
-var Production = require('../lib/productions');
-exports.index = {
-
-  json : function(req,res){
-
-  },
-
-  default : function(req,res){
-  	console.log("hello default action");
-  	res.render("index");
-  }
- 
+exports.index = function(req, res){
+  	var preload = require("../lib/api");
+    preload.index.execute(function(err,result){
+      res.render("index", {preload: JSON.stringify(result)});
+    });
 };

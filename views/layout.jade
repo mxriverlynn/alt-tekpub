@@ -20,7 +20,10 @@ html
     script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js")
     script(src='/javascripts/bootstrap.min.js')
     script(src='/javascripts/handlebars-min.js')
-    
+    script(src='/javascripts/underscore-min.js')
+    script(src='/javascripts/backbone-min.js')
+    script(src='https://use.typekit.com/msx8oui.js')
+
    body(lang='en') 
     .navbar
       .navbar-inner
@@ -72,3 +75,4 @@ html
     
     script
       $('.dropdown-toggle').dropdown();
+      try{Typekit.load();}catch(e){}

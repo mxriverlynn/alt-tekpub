@@ -4,7 +4,8 @@
  */
 
 var express = require('express')
-  , Resource = require('express-resource');
+  , Resource = require('express-resource')
+  , routes = require('./routes')
 
 var app = module.exports = express.createServer();
 var mongoose = require('mongoose');
@@ -36,11 +37,7 @@ app.configure('production', function(){
 
 // Routes
 app.get("/api", require('./routes/api').index);
-
-
-app.resource('productions', require('./routes/productions'));
-app.resource('/', require('./routes/index'));
-
+app.get('/', routes.index);
 
 
 app.listen(3000);

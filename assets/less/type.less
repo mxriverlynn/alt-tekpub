@@ -5,7 +5,7 @@
 
 // BODY TEXT
 // ---------
-
+ 
 p {
   margin: 0 0 @baseLineHeight / 2;
   font-family: @baseFontFamily;
@@ -165,8 +165,9 @@ abbr {
 // Blockquotes
 blockquote {
   padding: 0 0 0 15px;
-  margin: 0 0 @baseLineHeight;
-  border-left: 5px solid @grayLighter;
+  margin: 10px 0 @baseLineHeight*2;
+  border-left: 2px solid @grayLighter;
+  font-style: italic;
   p {
     margin-bottom: 0;
     #font > .shorthand(16px,300,@baseLineHeight * 1.25);
@@ -216,4 +217,5 @@ small {
 }
 cite {
   font-style: normal;
+  font-weight:bold;
 }

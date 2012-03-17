@@ -1,17 +1,46 @@
+script(type="text/javascript")
+	$().ready(function(){
+		tekpub = !{preload};
+		var source = $("#special-template").html();
+		var template = Handlebars.compile(source);
+		$("#special").html(template(tekpub.special));
+	
+	});
+	
 .container-fluid
 	.hero-unit
 		.container
-			h1
 
 .container
+	#special
+	hr
+	#blurb
+		.row
+			.span10
+				h2 Learn It Now - Don't Waste Your Time
+				p.emphasis Time is money - so why pay more for a HUGE tech book that will be obsolete within months? Our videos are produced when the technology happens - not months afterwards. The only way tech publishers can release a book at our speed is to start months before we do - working with pre-release software and rushing in changes prior to production.
+
+script(id='special-template', type='text/x-handlebars')			
 	.row
-		.span4
+		.span8.special-production
+			h2{{lead}}
+			p
+				<iframe width="680" height="420" src="http://www.youtube.com/embed/{{production.youtube_preview}}" frameborder="0" allowfullscreen></iframe>
+			p {{production.description}}
+		.span3
+			blockquote
+				p Great speaker and tremendously charismatic. His talks are informative, easy to comprehend and funny at the same time
+				cite Marius Shulz
+			blockquote
+				p I'm halfway through the Hanselman video from Tekpub and already have a page of notes of things I can improve. Love it!
+				cite Rob Sullivan
+			blockquote
+				p Just watched the "Art of Speaking: Scott Hanselman" on Tekpub. Absolutely wonderful!
+				cite Chris Schroll
+			blockquote
+				p Done presentation test-run. Used some of the Hanselman techniques from Tekpub. Very effective. Only $18, guys. Recommended!
+				cite "Edge"
+			blockquote
+				p Watching my first vid on tekpub: Hanselman's talk on presenting; that talk alone seems to be worth the value of the annual description's fee.
+				cite Tom Janssens
 
-
-script
-	$().ready(function(){
-		//pull the api
-		$.get("/api", function(data){
-			alert(data.title);
-		}, "json");
-	});
