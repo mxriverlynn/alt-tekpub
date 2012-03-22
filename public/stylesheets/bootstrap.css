@@ -3135,6 +3135,7 @@ a.thumbnail:hover {
 }
 .thumbnail .caption {
   padding: 9px;
+  line-height: 1.8;
 }
 .label {
   padding: 2px 4px 3px;

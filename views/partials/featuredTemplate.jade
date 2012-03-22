@@ -1,0 +1,11 @@
+script(id='featuredTemplate', type='text/x-handlebars')     
+  .row
+    .span12.featured-productions
+      h2 {{title}}
+    .span12
+      ul.thumbnails
+        {{#each productions}}
+        include production
+        {{/each}}
+
+  

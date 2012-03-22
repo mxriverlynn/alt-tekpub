@@ -1,0 +1,13 @@
+script(id='specialTemplate', type='text/x-handlebars')     
+  .row
+    .span8.special-production
+      h2{{title}}
+      p
+        <iframe width="680" height="420" src="http://www.youtube.com/embed/{{production.youtube_preview}}" frameborder="0" allowfullscreen></iframe>
+      p {{production.description}}
+    .span3
+      {{#each quotes}}
+      blockquote
+        p {{this.testimony}}
+        cite {{this.author}}
+      {{/each}}

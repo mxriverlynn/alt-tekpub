@@ -37,6 +37,7 @@ app.configure('production', function(){
 
 // Routes
 app.get("/api", require('./routes/api').index);
+app.resource ("/productions", require('./routes/productions'));
 app.get('/', routes.index);
 
 
