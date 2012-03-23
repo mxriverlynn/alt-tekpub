@@ -1,17 +1,17 @@
 (function() {
-  var Customer, Customers, Invoice,
+  var Invoice, InvoiceItem,
     __hasProp = Object.prototype.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor; child.__super__ = parent.prototype; return child; };
 
-  Customer = (function(_super) {
+  InvoiceItem = (function(_super) {
 
-    __extends(Customer, _super);
+    __extends(InvoiceItem, _super);
 
-    function Customer() {
-      Customer.__super__.constructor.apply(this, arguments);
+    function InvoiceItem() {
+      InvoiceItem.__super__.constructor.apply(this, arguments);
     }
 
-    return Customer;
+    return InvoiceItem;
 
   })(Backbone.Model);
 
@@ -23,27 +23,13 @@
       Invoice.__super__.constructor.apply(this, arguments);
     }
 
+    Invoice.prototype.model = InvoiceItem;
+
+    Invoice.prototype.url = "/api/invoice";
+
     return Invoice;
 
-  })(Backbone.Model);
-
-  Customers = (function(_super) {
-
-    __extends(Customers, _super);
-
-    function Customers() {
-      Customers.__super__.constructor.apply(this, arguments);
-    }
-
-    Customers.prototype.model = Customer;
-
-    Customers.prototype.url = "/api/customers";
-
-    return Customers;
-
   })(Backbone.Collection);
-
-  window.Customer = Customer;
 
   window.Invoice = Invoice;
 

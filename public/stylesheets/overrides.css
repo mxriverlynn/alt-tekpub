@@ -55,3 +55,30 @@ hr {
   border: 0;
   border-right: 1px solid #eee;
 }
+.hero-unit ul {
+  list-style: none outside;
+  margin-bottom: 20px;
+}
+.hero-unit li{
+  margin-right: 12px;
+  padding: 18px;
+  font-size:20px;
+  border-bottom: 1px solid #333;
+  font-family: facitweb,"lucida grande";
+  color: #778C7A;
+  line-height: 1.8;
+}
+.hero-unit li.last{
+  border-bottom:0;
+}
+.splash{
+  margin-top:24px;
+}
+.splash-left{
+  border-right: 1px solid #333;
+  padding-right:36px;
+}
+.splash-right{
+  padding-left:28px;
+  
+}

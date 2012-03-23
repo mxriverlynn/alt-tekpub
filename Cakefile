@@ -12,4 +12,4 @@ task 'watch', 'compiles client CS and LESS', (options) ->
   #runCommand 'sass',   ['--watch', 'public/css/sass:public/css']
   #runCommand 'coffee', '-o','models','-wc', 'coffeescript/models'
   #runCommand 'vows', ['--spec']
-  runCommand 'coffee', '-o', 'public/javascripts', '-wc', 'assets/client'
+  runCommand 'coffee', '-o', 'public/javascripts', '-wc', 'assets/coffee'
