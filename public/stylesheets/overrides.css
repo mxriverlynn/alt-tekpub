@@ -82,3 +82,26 @@ hr {
   padding-left:28px;
   
 }
+.production-bar ul{
+  list-style:none;
+}
+.production-bar li{
+  display: inline;
+  margin:6px;
+}
+.production-bar{
+  background-color:#000;
+  opacity:0.8;
+  margin-top:-38px;
+  padding:8px;
+}
+.production-bar a{
+  color:#999;
+}
+.production-bar i{
+  margin-right:5px;
+}
+.production .description{
+  margin-top:18px;
+  font-size:90%;
+}

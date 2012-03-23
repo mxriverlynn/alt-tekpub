@@ -1,13 +1,13 @@
 li.span4
-  .thumbnail(href = '#')
-    img(src='/images/productions/{{this.slug}}_slide.png')
-    .caption
-      h5 {{this.title}}
-      p {{this.description}}
-      p 
-        a.btn.button-primary(href="#") 
-          <i class='icon-shopping-cart'></i> Add Now
-        a.btn(href="#") 
-          <i class='icon-play'></i>View
-        a.btn(href="#") 
-          <i class='icon-download'></i> Download
+  .production
+    img.slide(src='/images/productions/{{this.slug}}_slide.png', title='{{this.description}}')
+    .production-bar(style = "text-align:center")
+      ul
+        li 
+          <a href=#><i class='icon-shopping-cart'></i> Add Now</a>
+        li 
+          <a href=#><i class='icon-play'></i>View</a>
+        li 
+          <a href=#><i class='icon-download'></i> Download</a>
+    .description
+      {{this.description}}
