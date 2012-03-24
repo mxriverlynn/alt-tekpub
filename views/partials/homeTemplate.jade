@@ -1,0 +1,41 @@
+script(id = 'homeTemplate', type='x-handlebars')
+  #splash
+    .container-fluid
+      .hero-unit
+        .container
+          .row.splash
+            .span4.splash-left
+              ul
+                li
+                  img(src='/images/{{logoLarge}}')
+                {{#each descriptors}}
+                li {{this}}
+                {{/each}}
+
+            .span6.splash-right
+              img(src='/images/{{splash}}')
+  .container
+    #special
+      .row
+      .span8.special-production
+        h2{{productions.special.title}}
+        p
+          <iframe width="680" height="420" src="{{productions.special.production.preview}}" frameborder="0" allowfullscreen></iframe>
+        p {{productions.special.description}}
+      .span3
+        {{#each productions.special.quotes}}
+        blockquote
+          p {{this.testimony}}
+          cite {{this.author}}
+        {{/each}}
+    hr
+    #featured
+      .row
+        .span12.featured-productions
+          h2 {{productions.featured.title}}
+        .span12
+          ul.thumbnails
+            {{#each productions.featured.productions}}
+            include productionTile
+            {{/each}}
+

@@ -1,37 +1,4 @@
-script(type="text/javascript")
-	$().ready(function(){
-		$.get("/api", function(data){
-			tekpub = new Tekpub(data);
-			tekpub.render();
-		}, "json");
-	});
-	
-.container-fluid
-	.hero-unit
-		.container
-			.row.splash
-				.span4.splash-left
-					ul
-						li
-							img(src='/images/logo_420.png')
-						li Concise, professional, top-quality screencasts
-						li Microsoft.Net, Ruby, Javascript, Linux - it's all here
-						li.last Get up to speed on new technologies in a fraction of the time
+#app	
 
-				.span6.splash-right
-					img(src='/images/splash.gif')
-.container
-	#special
-	hr
-
-	#blurb
-		.row
-			.span10
-				h2 Learn It Now - Don't Waste Your Time
-				p.emphasis Time is money - so why pay more for a HUGE tech book that will be obsolete within months? Our videos are produced when the technology happens - not months afterwards. The only way tech publishers can release a book at our speed is to start months before we do - working with pre-release software and rushing in changes prior to production.
-	hr
-	#featured
-	
-	include partials/specialTemplate
-	include partials/featuredTemplate
-
+include partials/homeTemplate
+include partials/viewerTemplate

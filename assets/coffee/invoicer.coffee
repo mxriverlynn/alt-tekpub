@@ -1,8 +1,3 @@
-class InvoiceItem extends Backbone.Model
-
-
-class Invoice extends Backbone.Collection
-  model : InvoiceItem
-  url : "/api/invoice"
+class Invoice extends Backbone.Model
 
 window.Invoice = Invoice

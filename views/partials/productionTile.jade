@@ -1,0 +1,14 @@
+li.span4
+  .production
+    a(href="#", , class='production-tile-view', data-slug='{{this.slug}}')
+      img.slide(src='/images/productions/{{this.slug}}_slide.png', title='{{this.description}}')
+    .production-bar(style = "text-align:center")
+      ul
+        li 
+          <a href=# data-slug='{{this.slug}}' class='production-tile-cart'><i class='icon-shopping-cart'></i> Add Now</a>
+        li 
+          <a href=# data-slug='{{this.slug}}' class='production-tile-view'><i class='icon-play'></i>View</a>
+        li 
+          <a href=# data-slug='{{this.slug}}' class='production-tile-download'><i class='icon-download'></i> Download</a>
+    .description
+      {{this.description}}
