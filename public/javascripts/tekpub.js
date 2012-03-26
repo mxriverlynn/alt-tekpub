@@ -2,16 +2,17 @@ TekpubView = Backbone.View.extend({
   initialize : function(){
     _.bindAll(this,"render");
   },
-  render : function(){
-    var compiled = Handlebars.compile($(this.template).html());
+  render : function(data){
+    var compiled = Handlebars.compile($(this.options.template).html());
     var html = "nada";
     if(this.model){
       html = compiled(this.model.toJSON());
     }else if(this.collection){
       html = compiled(this.collection.toJSON());
     }else{
-      html = compiled(tekpub.core);
+      html = compiled(data);
     }
+    console.log(html);
     $(this.el).html(html);
   }
 });
@@ -26,11 +27,8 @@ Productions = Backbone.Collection.extend({
   model : Production
 });
 
-ProductionView = TekpubView.extend({
-  initialize : function(){
-    this.template = "#viewerTemplate";
-  }
-});
+ProductionView = TekpubView.extend({});
+ProductionMenuView = TekpubView.extend({});
 
 var HomeView = TekpubView.extend({
   events : {
@@ -59,26 +57,64 @@ TekpubRouter = Backbone.Router.extend({
 
 Tekpub = function(data) { 
 
-  var _homeView = new HomeView({el:"#app"});
-  var _productionView = new ProductionView({el:"#app"});
-  var _selected = data.productions.special.production;
-  var _productions = data.productions.all;
-  var _special = data.productions.special;
-  var _featured = data.productions.featured;
+  var _homeView = new HomeView({el:"#app", template : "#homeTemplate"});
+  var _productionView = new ProductionView({el:"#main", template : "#viewerTemplate"});
+  var _productions = new Productions(data.productions);
+  var _productionMenuView = new ProductionMenuView({el : "#menu", template : "#productionMenuTemplate"})
+  var _special = data.special;
 
+  var _featured = function(){
+     return data.productions.filter(function(p){
+        return p.tags.indexOf("featured") > -1;
+     });
+  }
+
+  var _microsoft = function(){
+     return data.productions.filter(function(p){
+        return p.tags.indexOf("microsoft") > -1;
+     });
+  }
+  var _ruby = function(){
+     return data.productions.filter(function(p){
+        return p.tags.indexOf("ruby") > -1;
+     });
+  }
+  var _mobile = function(){
+     return data.productions.filter(function(p){
+        return p.tags.indexOf("mobile") > -1;
+     });
+  }
+  var _fullThrottle = function(){
+     return data.productions.filter(function(p){
+        return p.tags.indexOf("full-throttle") > -1;
+     });
+  }
   var _showHome = function(){
     _clear();
-    _homeView.render();
+    var featuredProductions = _featured();
+    _homeView.render({logo:data.logoLarge, splash : data.splash, descriptors: data.descriptors, special:_special, featured : featuredProductions});
   };
-  
+
+  var _showMenu = function(){
+    $("#menu").empty();
+    _productionMenuView.render({
+      microsoft : _microsoft(),
+      ruby : _ruby(),
+      mobile : _mobile(),
+      fullThrottle : _fullThrottle()
+    });
+  };
+
   var _showProduction =function (slug){
     _clear();
-    _selected = _productions.filter(function(p){return p.slug == slug});
-    $.get(_selected.link,function(data){
-      model = new Production(data);
-      console.log(model);
-      _productionView.render();
-    });
+    _showMenu();
+    
+    // _selected = _productions.filter(function(p){return p.slug == slug});
+    // $.get(_selected.link,function(data){
+    //   model = new Production(data);
+    //   console.log(model);
+    //   _productionView.render();
+    // });
     
   };
 
@@ -88,12 +124,12 @@ Tekpub = function(data) {
 
   return {
     special   : _special,
-    featured  : _featured,
+    //featured  : _featured,
     core      : data,
     productions : _productions,
     showHome  : _showHome,
     showProduction : _showProduction,
-    selectedProduction :  _selected,
+    featured : _featured
   }
 
 };

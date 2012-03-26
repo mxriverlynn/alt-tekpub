@@ -7,7 +7,7 @@ script(id = 'homeTemplate', type='x-handlebars')
             .span4.splash-left
               ul
                 li
-                  img(src='/images/{{logoLarge}}')
+                  img(src='/images/{{logo}}')
                 {{#each descriptors}}
                 li {{this}}
                 {{/each}}
@@ -18,12 +18,12 @@ script(id = 'homeTemplate', type='x-handlebars')
     #special
       .row
       .span8.special-production
-        h2{{productions.special.title}}
+        h2{{special.title}}
         p
-          <iframe width="680" height="420" src="{{productions.special.production.preview}}" frameborder="0" allowfullscreen></iframe>
-        p {{productions.special.description}}
+          {{{special.link}}}
+        p {{special.description}}
       .span3
-        {{#each productions.special.quotes}}
+        {{#each special.quotes}}
         blockquote
           p {{this.testimony}}
           cite {{this.author}}
@@ -32,10 +32,10 @@ script(id = 'homeTemplate', type='x-handlebars')
     #featured
       .row
         .span12.featured-productions
-          h2 {{productions.featured.title}}
+          h2 Featured Productions
         .span12
           ul.thumbnails
-            {{#each productions.featured.productions}}
+            {{#each featured}}
             include productionTile
             {{/each}}
 

@@ -1,0 +1,18 @@
+script(id = "productionMenuTemplate", type = "x-handlebars")
+  .container
+    .row
+      .span3 
+        h4 Microsoft .NET
+        {{#each microsoft}}
+        li {{this.title}}
+        {{/each}}
+
+        h4 Ruby
+        {{#each ruby}}
+        li {{this.title}}
+        {{/each}}                
+
+        h4 Mobile
+        {{#each mobile}}
+        li {{this.title}}
+        {{/each}}  

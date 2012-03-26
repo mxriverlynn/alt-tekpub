@@ -1,13 +1,1 @@
 script(id="viewerTemplate", type='x-handlebars')
-  .container
-    .row
-      .span3 
-        {{#each categories}}
-        h3 {{this.title}}
-        ul
-          {{#each productions}}
-          li {{this.title}}
-          {{/each}}
-        {{/each}}
-      .span9
-        h2 {{selected.title}}
