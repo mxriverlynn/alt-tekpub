@@ -19,13 +19,15 @@ var Mongo = require('mongodb').Db,
 // Configuration
 
 app.configure(function(){
+  app.use(express.cookieParser());
+  app.use(express.session({ secret: "sugar snot box" }));
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(app.router);
-  
+
   app.use(express.static(__dirname + '/public'));
 	
   

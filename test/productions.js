@@ -3,7 +3,7 @@ var Mongo = require('mongodb').Db,
   Server = require('mongodb').Server;
 
 
-var productions = require("../lib/productions")
+var productions = require("../lib/productions");
 
 db = new Mongo('tekpub', new Server("localhost", Connection.DEFAULT_PORT, {}), {native_parser:true});
 db.open(function(err,db){
