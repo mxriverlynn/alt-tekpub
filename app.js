@@ -39,6 +39,12 @@ app.configure('development', function(){
   //mongoose.connect('mongodb://localhost/tekpub');  
 });
 
+app.configure('test', function(){
+  app.use(express.errorHandler({ dumpExceptions: true, showStack: true })); 
+  db = new Mongo('tekpub_test', new Server("localhost", Connection.DEFAULT_PORT, {}), {native_parser:true});
+  //mongoose.connect('mongodb://localhost/tekpub');  
+});
+
 app.configure('production', function(){
   app.use(express.errorHandler()); 
   //mongoose.connect('mongodb://localhost/tekpub');  
@@ -52,6 +58,7 @@ app.get('/', routes.index);
 app.get('/production/:slug', routes.index);
 
 db.open(function(err,db){
+  
   app.listen(3000);
   console.log("Connected to Mongo");
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
