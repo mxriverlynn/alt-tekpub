@@ -55,37 +55,40 @@ TekpubRouter = Backbone.Router.extend({
 });
 
 
-Tekpub = function(data) { 
+Tekpub = function() { 
+
+  _data = {};
+  _special = {};
+  _productions = {};
+  _loaded = false;
 
   var _homeView = new HomeView({el:"#app", template : "#homeTemplate"});
   var _productionView = new ProductionView({el:"#main", template : "#viewerTemplate"});
-  var _productions = new Productions(data.productions);
   var _productionMenuView = new ProductionMenuView({el : "#menu", template : "#productionMenuTemplate"})
-  var _special = data.special;
-
+  
   var _featured = function(){
-     return data.productions.filter(function(p){
+     return _data.productions.filter(function(p){
         return p.tags.indexOf("featured") > -1;
      });
   }
 
   var _microsoft = function(){
-     return data.productions.filter(function(p){
+     return _data.productions.filter(function(p){
         return p.tags.indexOf("microsoft") > -1;
      });
   }
   var _ruby = function(){
-     return data.productions.filter(function(p){
+     return _data.productions.filter(function(p){
         return p.tags.indexOf("ruby") > -1;
      });
   }
   var _mobile = function(){
-     return data.productions.filter(function(p){
+     return _data.productions.filter(function(p){
         return p.tags.indexOf("mobile") > -1;
      });
   }
   var _fullThrottle = function(){
-     return data.productions.filter(function(p){
+     return _data.productions.filter(function(p){
         return p.tags.indexOf("full-throttle") > -1;
      });
   }
@@ -118,6 +121,25 @@ Tekpub = function(data) {
     
   };
 
+  var _canDownload = function(slug){
+    return this.customer.owned.indexOf(slug) >=0;
+  }
+
+  var _load = function(data){
+    
+    _data = data;
+
+    this.title = _data.title;
+    this.description = _data.description;
+    this.descriptors = _data.descriptors;
+    this.customer = _data.customer;
+    this.splash = _data.splash;
+
+    _special = _data.special;
+    _productions = new Productions(_data.productions);
+    _loaded = true;
+  }
+
   var _clear = function() {
     $("#app").empty();
   };
@@ -125,19 +147,15 @@ Tekpub = function(data) {
   return {
     special   : _special,
     //featured  : _featured,
-    core      : data,
+    core      : _data,
     productions : _productions,
     showHome  : _showHome,
     showProduction : _showProduction,
-    featured : _featured
+    featured : _featured,
+    load : _load,
+    canDownload : _canDownload
   }
 
 };
+tekpub = Tekpub();
 
-$().ready(function() {
-  $.get("/api", function(data){
-    tekpub = Tekpub(data);
-    app = new TekpubRouter();
-    Backbone.history.start({pushState:true});
-  },"json");
-});
